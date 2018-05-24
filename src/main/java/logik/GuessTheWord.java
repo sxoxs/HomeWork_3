@@ -47,7 +47,6 @@ public class GuessTheWord {
         System.out.println("Угадайте слово");
 
         for (;;){
-            System.out.println(words[requiredNumberWord]);
             System.out.println("Введите слово:");
 
             if (words[requiredNumberWord].equalsIgnoreCase(sc.nextLine())) {
