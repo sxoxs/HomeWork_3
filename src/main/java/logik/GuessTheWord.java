@@ -22,54 +22,59 @@ public class GuessTheWord {
 
 
     public void runGameGuessTheWord() {
-        String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado",
- "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut",
- "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
-
-        Random rn = new Random();
-        int requiredNumberWord = 0;
-        int attemptsNumber = 0;
         Scanner sc = new Scanner(System.in);
-
         for (;;) {
-            requiredNumberWord = rn.nextInt(words.length);
-            attemptsNumber = 0;
-            System.out.println("Угадайте слово");
-
-            for (;;){
-                System.out.println(words[requiredNumberWord]);
-
-                System.out.println("Введите слово:");
-                if (words[requiredNumberWord].equalsIgnoreCase(sc.nextLine())) {
-                    System.out.println("Поздравляем!\nВы угадали слово");
-                    break;
-                }
-                else {
-                    System.out.println("Вы не угадали");
-                    System.out.println("Подсказка:");
-                    attemptsNumber++;
-                    for (int i = 0; i < 15; i++) {
-                        if (i < attemptsNumber){
-                            System.out.print(words[requiredNumberWord].charAt(i));
-                        }
-                        else {
-                            System.out.print("#");
-                        }
-                    }
-                    System.out.println();
-                    if (attemptsNumber == words[requiredNumberWord].length()){
-                        System.out.println("Вы не угадали слово");
-                        break;
-                    }
-                }
-            }
-
+            game();
             System.out.println("Повторить игру?\n 1. Да; \n 2. Нет.");
             if (2 == sc.nextInt()){
                 break;
             }
         }
     }
+
+    private void game() {
+        String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado",
+                "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut",
+                "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
+
+        Random rn = new Random();
+        int requiredNumberWord = 0;
+        int attemptsNumber = 0;
+        Scanner sc = new Scanner(System.in);
+
+        requiredNumberWord = rn.nextInt(words.length);
+        attemptsNumber = 0;
+        System.out.println("Угадайте слово");
+
+        for (;;){
+            System.out.println(words[requiredNumberWord]);
+            System.out.println("Введите слово:");
+
+            if (words[requiredNumberWord].equalsIgnoreCase(sc.nextLine())) {
+                System.out.println("Поздравляем!\nВы угадали слово");
+                break;
+            }
+            else {
+                System.out.println("Вы не угадали");
+                System.out.println("Подсказка:");
+                attemptsNumber++;
+                for (int i = 0; i < 15; i++) {
+                    if (i < attemptsNumber){
+                        System.out.print(words[requiredNumberWord].charAt(i));
+                    }
+                    else {
+                        System.out.print("#");
+                    }
+                }
+                System.out.println();
+                if (attemptsNumber == words[requiredNumberWord].length()){
+                    System.out.println("Вы не угадали слово");
+                    break;
+                }
+            }
+        }
+    }
+
 }
 
 
